@@ -1,0 +1,10 @@
+c:\Projects\CLRLogEntries\CLRLogEntries\bin\Debug\CLRLogEntries.dacpac
+c:\Projects\CLRLogEntries\CLRLogEntries\bin\Debug\CLRLogEntries.dll
+c:\Projects\CLRLogEntries\CLRLogEntries\bin\Debug\CLRLogEntries.pdb
+c:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\CLRLogEntries.sqlprojResolveAssemblyReference.cache
+c:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\CLRLogEntries.dll
+c:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\CLRLogEntries.pdb
+C:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\Model.xml
+C:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\refactor.xml
+C:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\postdeploy.sql
+C:\Projects\CLRLogEntries\CLRLogEntries\obj\Debug\predeploy.sql

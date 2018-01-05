@@ -1,0 +1,10 @@
+c:\Projects\UserType\UserType\bin\Debug\UserType.dacpac
+c:\Projects\UserType\UserType\bin\Debug\UserType.dll
+c:\Projects\UserType\UserType\bin\Debug\UserType.pdb
+c:\Projects\UserType\UserType\obj\Debug\Model.xml
+c:\Projects\UserType\UserType\obj\Debug\refactor.xml
+c:\Projects\UserType\UserType\obj\Debug\postdeploy.sql
+c:\Projects\UserType\UserType\obj\Debug\predeploy.sql
+c:\Projects\UserType\UserType\obj\Debug\UserType.dll
+c:\Projects\UserType\UserType\obj\Debug\UserType.pdb
+C:\Projects\UserType\UserType\obj\Debug\UserType.sqlprojResolveAssemblyReference.cache

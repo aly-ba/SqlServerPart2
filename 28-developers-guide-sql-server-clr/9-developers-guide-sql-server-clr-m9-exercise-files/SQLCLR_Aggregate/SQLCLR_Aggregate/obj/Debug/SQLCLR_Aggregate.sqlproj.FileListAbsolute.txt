@@ -1,0 +1,9 @@
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\bin\Debug\SQLCLR_Aggregate.dacpac
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\bin\Debug\SQLCLR_Aggregate.dll
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\bin\Debug\SQLCLR_Aggregate.pdb
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\obj\Debug\Model.xml
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\obj\Debug\refactor.xml
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\obj\Debug\postdeploy.sql
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\obj\Debug\predeploy.sql
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\obj\Debug\SQLCLR_Aggregate.dll
+c:\Projects\SQLCLR_Aggregate\SQLCLR_Aggregate\obj\Debug\SQLCLR_Aggregate.pdb

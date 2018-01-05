@@ -1,0 +1,71 @@
+12/9/2014 9:54:30 PM	This log contains information about the import schema operation into project 'CLR_Trigger' on computer 'DADDY-HP' by user 'Daddy'.
+12/9/2014 9:54:31 PM	Import of database schema has started.
+12/9/2014 9:54:31 PM	Gathering database options
+12/9/2014 9:54:31 PM	Gathering users
+12/9/2014 9:54:31 PM	Gathering roles
+12/9/2014 9:54:31 PM	Gathering application roles
+12/9/2014 9:54:31 PM	Gathering role memberships
+12/9/2014 9:54:31 PM	Gathering filegroups
+12/9/2014 9:54:31 PM	Gathering full-text catalogs
+12/9/2014 9:54:31 PM	Gathering assemblies
+12/9/2014 9:54:31 PM	Gathering certificates
+12/9/2014 9:54:31 PM	Gathering asymmetric keys
+12/9/2014 9:54:31 PM	Gathering symmetric keys
+12/9/2014 9:54:31 PM	Gathering encrypted symmetric keys
+12/9/2014 9:54:31 PM	Gathering schemas
+12/9/2014 9:54:31 PM	Gathering XML schema collections
+12/9/2014 9:54:31 PM	Gathering user-defined data types
+12/9/2014 9:54:31 PM	Gathering user-defined types
+12/9/2014 9:54:31 PM	Gathering table types
+12/9/2014 9:54:31 PM	Gathering unique keys for table types
+12/9/2014 9:54:31 PM	Gathering primary keys for table types
+12/9/2014 9:54:31 PM	Gathering check constraints for table types
+12/9/2014 9:54:31 PM	Gathering default constraints for table types
+12/9/2014 9:54:31 PM	Gathering partition functions
+12/9/2014 9:54:31 PM	Gathering partition schemes
+12/9/2014 9:54:31 PM	Gathering functions
+12/9/2014 9:54:31 PM	Gathering encrypted functions
+12/9/2014 9:54:31 PM	Gathering aggregates
+12/9/2014 9:54:31 PM	Gathering procedures
+12/9/2014 9:54:31 PM	Gathering encrypted procedures
+12/9/2014 9:54:31 PM	Gathering tables
+12/9/2014 9:54:32 PM	Gathering primary keys
+12/9/2014 9:54:32 PM	Gathering unique constraints
+12/9/2014 9:54:32 PM	Gathering foreign keys
+12/9/2014 9:54:32 PM	Gathering default constraints
+12/9/2014 9:54:32 PM	Gathering check constraints
+12/9/2014 9:54:32 PM	Gathering views
+12/9/2014 9:54:32 PM	Gathering encrypted views
+12/9/2014 9:54:32 PM	Gathering indexes
+12/9/2014 9:54:32 PM	Gathering statistics
+12/9/2014 9:54:32 PM	Gathering full-text index stoplists
+12/9/2014 9:54:32 PM	Gathering full-text indexes
+12/9/2014 9:54:32 PM	Gathering spatial indexes
+12/9/2014 9:54:32 PM	Gathering XML indexes
+12/9/2014 9:54:32 PM	Gathering encrypted triggers
+12/9/2014 9:54:32 PM	Gathering triggers
+12/9/2014 9:54:32 PM	Gathering encrypted and clr ddl triggers
+12/9/2014 9:54:32 PM	Gathering ddl triggers
+12/9/2014 9:54:32 PM	Gathering synonyms
+12/9/2014 9:54:32 PM	Gathering defaults
+12/9/2014 9:54:32 PM	Gathering data constraint uddt bindings
+12/9/2014 9:54:32 PM	Gathering rules
+12/9/2014 9:54:32 PM	Gathering data constraint uddt bindings
+12/9/2014 9:54:32 PM	Gathering message types
+12/9/2014 9:54:32 PM	Gathering queues
+12/9/2014 9:54:32 PM	Gathering contracts
+12/9/2014 9:54:32 PM	Gathering services
+12/9/2014 9:54:32 PM	Gathering event notifications
+12/9/2014 9:54:32 PM	Gathering remote service bindings
+12/9/2014 9:54:32 PM	Gathering broker priorities
+12/9/2014 9:54:32 PM	Gathering signatures
+12/9/2014 9:54:32 PM	Gathering data compression options
+12/9/2014 9:54:32 PM	Gathering extended properties
+12/9/2014 9:54:32 PM	Gathering credentials
+12/9/2014 9:54:32 PM	Gathering logins
+12/9/2014 9:54:32 PM	Gathering server audits
+12/9/2014 9:54:33 PM	Scanning project for duplicate elements
+12/9/2014 9:54:33 PM	Finished duplicate element processing
+12/9/2014 9:54:34 PM	Finished importing database.
+12/9/2014 9:54:34 PM	A summary of the import was saved to the following location: c:\Projects\CLR_Trigger\CLR_Trigger\Import Schema Logs\CLR_Trigger_20141210035430.log
+12/9/2014 9:54:34 PM	Click Finish to continue...

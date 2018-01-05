@@ -1,0 +1,128 @@
+/* Course: Introduction to Dates and Times in SQL Server */
+
+DROP TABLE MYTABLE;
+CREATE TABLE MYTABLE(DT_1 SMALLDATETIME);
+SELECT TABLE_NAME,COLUMN_NAME,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,DATETIME_PRECISION
+ FROM INFORMATION_SCHEMA.COLUMNS 
+ WHERE TABLE_NAME='MYTABLE';
+/*
+COLUMN_NAME DATA_TYPE
+----------- -------------
+DT_1        smalldatetime
+*/
+
+SELECT CAST('2013-12-31 18:30:00' AS SMALLDATETIME) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+2013-12-31 18:30:00
+*/
+
+SELECT CAST('2013-12-31 18:30:25' AS SMALLDATETIME) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+2013-12-31 18:30:00
+*/
+
+SELECT CAST('2013-12-31 18:30:29.999' AS SMALLDATETIME) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+2013-12-31 18:31:00
+*/
+
+SELECT CAST('2013-12-31' AS SMALLDATETIME) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+2013-12-31 00:00:00
+*/
+
+SELECT CAST('18:30:25.123' AS SMALLDATETIME) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+1900-01-01 18:30:00
+*/
+
+SELECT CAST('2013 18:30' AS SMALLDATETIME) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+2013-01-01 18:30:00
+*/
+
+SELECT CAST(CAST('12/31/2013' AS SMALLDATETIME) - CAST('11/30/2013' AS SMALLDATETIME) AS SMALLINT) AS DIFF1;
+/*
+DIFF1
+------
+31
+*/
+
+
+SELECT CAST(CAST('12/31/2013 10:06:00' AS SMALLDATETIME) - CAST('11/30/2013 09:06:00' AS SMALLDATETIME) AS FLOAT) AS DIFF1;
+/*
+DIFF1
+----------------------
+31.0416666666667
+*/
+
+SELECT 1.0/24.0 AS FRACTION_1_24;
+/*
+FRACTION_1_24
+---------------------------------------
+0.041666
+*/
+
+/* The two SELECT statements below are equivalent since 06:30 seconds is rounded up to 07:00 minutes */
+SELECT CAST(CAST('12/31/2013 10:06:30' AS SMALLDATETIME) - CAST('11/30/2013 09:06:00' AS SMALLDATETIME) AS FLOAT) AS DIFF1;
+SELECT CAST(CAST('12/31/2013 10:07:00' AS SMALLDATETIME) - CAST('11/30/2013 09:06:00' AS SMALLDATETIME) AS FLOAT) AS DIFF1;
+/*
+DIFF1
+----------------------
+31.0423611111111
+*/
+
+
+/* 31 days 1 hour 30 seconds */
+SELECT 31.0 + 60.0/(24.0*60.0) + 30.0/(24.0*60.0*60.0)
+/*
+---------------------------------------
+31.0420138882222
+*/
+
+SELECT CAST('2013-11-30' AS SMALLDATETIME) - 1.0 AS DAY_AFTER;
+/*
+DAY_AFTER
+-----------------------
+2013-11-29 00:00:00
+*/
+
+SELECT CAST('2013-11-30' AS SMALLDATETIME) + 1.5 AS DAY_AFTER;
+/*
+DAY_AFTER
+-----------------------
+2013-12-01 12:00:00
+*/
+
+SELECT DATEADD(minute,10,CAST('2013-11-30' AS SMALLDATETIME)) AS ADD_TEN_MINUTES;
+/*
+ADD_TEN_MINUTES
+-----------------------
+2013-11-30 00:10:00
+*/
+
+SELECT CAST(CAST('2013-11-30' AS DATE) AS SMALLDATETIME) + 1.0 AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+2013-12-01 00:00:00
+*/
+
+SELECT CAST(CAST('11:30:25' AS TIME) AS SMALLDATETIME) + 15.0/(24.0*60.0) AS MySmallDateTime1;
+/*
+MySmallDateTime1
+-----------------------
+1900-01-01 11:45:00
+*/

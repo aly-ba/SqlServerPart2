@@ -1,0 +1,154 @@
+/* Course: Introduction to Dates and Times in SQL Server */
+
+DROP TABLE MYTABLE;
+CREATE TABLE MYTABLE(DT_1 DATETIME,
+                     DT2_1 DATETIME2,
+                     DT2_2 DATETIME2(4));
+SELECT COLUMN_NAME,DATA_TYPE,DATETIME_PRECISION
+ FROM INFORMATION_SCHEMA.COLUMNS 
+ WHERE TABLE_NAME='MYTABLE';
+/*
+COLUMN_NAME DATA_TYPE DATETIME_PRECISION
+----------- --------- ------------------
+DT_1        datetime  3
+DT2_1       datetime2 7
+DT2_2       datetime2 4
+*/
+
+SELECT CAST('2013-12-31 18:30:30' AS DATETIME) 
+                                     AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+2013-12-31 18:30:30.000
+*/
+
+SELECT CAST('2013-12-31 18:30:25.256' AS DATETIME) 
+                                     AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+2013-12-31 18:30:25.257
+*/
+
+SELECT CAST('2013-12-31 18:30:25.1234567' AS DATETIME2) 
+                                     AS MyDateTime2;
+
+/*
+MyDateTime2
+---------------------------
+2013-12-31 18:30:25.1234567
+*/
+
+SELECT CAST('2013-12-31' AS DATETIME) 
+                              AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+2013-12-31 00:00:00.000
+*/
+
+SELECT CAST('18:30:25.123' AS DATETIME) 
+                              AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+1900-01-01 18:30:25.123
+*/
+
+SELECT CAST('2013 18:30' AS DATETIME2) 
+                              AS MyDateTime2;
+/*
+MyDateTime2
+---------------------------
+2013-01-01 18:30:00.0000000
+*/
+
+SELECT CAST(
+            CAST('12/31/2013 10:06:25' AS DATETIME) -
+            CAST('11/30/2013 09:06:20' AS DATETIME) 
+        AS FLOAT) AS DIFF1;
+/* 
+DIFF1
+---------------
+31.041724537037 
+*/
+
+SELECT (1.0*60.0*60.0)/(24.0*60.0*60.0) + 5.0/(24.0*60.0*60.0) 
+                                        AS FRACTION;
+;
+/*
+FRACTION
+---------------------------------------
+0.0417245369703
+*/
+
+--The code below will FAIL because you cannot subtract two DATETIME2's.
+SELECT CAST(
+            CAST('12/31/2013 10:06:25.5164' AS DATETIME2) -
+            CAST('11/30/2013 09:06:20.0001' AS DATETIME2) 
+        AS FLOAT) AS DIFF1;
+
+
+SELECT CAST('11/30/2013 09:06:20' AS DATETIME) - 1.0 AS DAY_BEFORE;
+/*
+DAY_BEFORE
+-----------------------
+2013-11-29 09:06:20.000
+*/
+
+SELECT CAST('11/30/2013 09:06:20' AS DATETIME) + 1.5 AS DAY_AFTER;
+/*
+DAY_AFTER
+-----------------------
+2013-12-01 21:06:20.000
+*/
+
+SELECT DATEADD(second,
+               30,
+               CAST('11/30/2013 09:06:20' AS DATETIME) 
+              ) AS ADD_THIRTY_SECONDS;
+/*
+ADD_THIRTY_SECONDS
+-----------------------
+2013-11-30 09:06:50.000
+*/
+
+SELECT CAST(
+            CAST('2013-11-30' AS DATE) 
+                               AS DATETIME) + 1.0 
+                                          AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+2013-12-01 00:00:00.000
+*/
+
+SELECT CAST(
+            CAST('11:30:25' AS TIME) 
+                          AS DATETIME) + 15E0/(24E0*60E0)
+                                          AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+1900-01-01 11:45:25.000
+*/
+
+--The code below is the same as the code above except I've removed the exponents and replaced by periods.
+--Take note of the slight difference in the results!!
+SELECT CAST(
+            CAST('11:30:25' AS TIME) 
+                          AS DATETIME) + 15.0/(24.0*60.0)
+                                          AS MyDateTime1;
+/*
+MyDateTime1
+-----------------------
+1900-01-01 11:45:24.997
+*/
+
+SELECT DATEADD(minute,15,CAST(CAST('11:30:25' AS SMALLDATETIME) AS DATETIME2)) AS MyDateTime2; 
+/*
+MyDateTime2
+---------------------------
+1900-01-01 11:45:25.0000000
+*/

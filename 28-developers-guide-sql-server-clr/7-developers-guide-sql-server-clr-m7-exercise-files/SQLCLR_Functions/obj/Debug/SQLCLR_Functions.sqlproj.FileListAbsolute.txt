@@ -1,0 +1,6 @@
+c:\Projects\SQLCLR_Functions\SQLCLR_Functions\bin\Debug\SQLCLR_Functions.dacpac
+c:\Projects\SQLCLR_Functions\SQLCLR_Functions\bin\Debug\SQLCLR_Functions.dll
+c:\Projects\SQLCLR_Functions\SQLCLR_Functions\bin\Debug\SQLCLR_Functions.pdb
+c:\Projects\SQLCLR_Functions\SQLCLR_Functions\obj\Debug\SQLCLR_Functions.dll
+c:\Projects\SQLCLR_Functions\SQLCLR_Functions\obj\Debug\SQLCLR_Functions.pdb
+c:\Projects\SQLCLR_Functions\SQLCLR_Functions\obj\Debug\SQLCLR_Functions.sqlprojResolveAssemblyReference.cache

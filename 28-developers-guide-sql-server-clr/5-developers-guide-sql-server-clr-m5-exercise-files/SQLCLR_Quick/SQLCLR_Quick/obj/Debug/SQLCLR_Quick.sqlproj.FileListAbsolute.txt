@@ -1,0 +1,1 @@
+C:\Projects\SQLCLR_Quick\SQLCLR_Quick\obj\Debug\SQLCLR_Quick.sqlprojResolveAssemblyReference.cache

@@ -1,0 +1,13 @@
+c:\Projects\CLR_Trigger\CLR_Trigger\bin\Debug\CLR_Trigger.dacpac
+c:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\CLR_Trigger.dll
+c:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\CLR_Trigger.pdb
+c:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\CLR_Trigger.sqlprojResolveAssemblyReference.cache
+C:\Projects\CLR_Trigger\CLR_Trigger\bin\Debug\CLR_Trigger.dll
+C:\Projects\CLR_Trigger\CLR_Trigger\bin\Debug\CLR_Trigger.pdb
+C:\Projects\CLR_Trigger\CLR_Trigger\bin\Debug\CLRLogEntries_1.dll
+C:\Projects\CLR_Trigger\CLR_Trigger\bin\Debug\SQLCLR_Functions_1.dll
+C:\Projects\CLR_Trigger\CLR_Trigger\bin\Debug\SQLCLR_Quick_1.dll
+C:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\Model.xml
+C:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\refactor.xml
+C:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\postdeploy.sql
+C:\Projects\CLR_Trigger\CLR_Trigger\obj\Debug\predeploy.sql

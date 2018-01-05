@@ -1,0 +1,92 @@
+/* Course: Introduction to Dates and Times in SQL Server */
+
+CREATE TABLE MYTABLE(SYS_TS1 TIME,
+                     SYS_TS2 TIME(7));
+
+SELECT TABLE_NAME,COLUMN_NAME,DATA_TYPE,CHARACTER_MAXIMUM_LENGTH,DATETIME_PRECISION
+ FROM INFORMATION_SCHEMA.COLUMNS 
+ WHERE TABLE_NAME='MYTABLE';
+/*
+COLUMN_NAME DATA_TYPE DATETIME_PRECISION
+----------- --------- ------------------
+SYS_TS1     time      7
+SYS_TS2     time      7
+*/
+
+SELECT CAST('01:00 PM' AS TIME) AS MyTime1;
+/*
+MyTime1
+----------------
+13:00:00.0000000
+*/
+
+SELECT CAST('13:15:22.1234567' AS TIME) AS MyTime1;
+/*
+MyTime1
+----------------
+13:15:22.1234567
+*/
+
+SELECT DISTINCT PATIENT_ID,NDC_KEY  
+ FROM RX_FILL_INFO
+ WHERE TAKE_TIME = TIMEFROMPARTS(11,0,0,0,0);
+/*
+PATIENT_ID NDC_KEY
+---------- -----------
+1          11111111111
+*/
+
+
+/* In this format, must specify HH:MM, seconds are set to zero */
+SELECT CAST('13:15' AS TIME) AS MyTime1;
+/*
+MyTime1
+----------------
+13:15:00.0000000
+*/
+
+/* In this format, must specify HH and AM/PM indicator, minutes/seconds both set to zero */
+SELECT CAST('1 PM' AS TIME) AS MyTime2;
+/*
+MyTime2
+----------------
+13:00:00.0000000
+*/
+
+/* Compute the number of minutes between two dates */
+SELECT DATEDIFF(minute,CAST('01:00 AM' AS TIME),CAST('02:10' AS TIME)) AS MyTime1;
+/*
+MyTime1
+-----------
+70
+*/
+
+SELECT DATEDIFF(minute,CAST('01:15 AM' AS TIME),CAST('02:15:50' AS TIME)) AS MyTime1;
+/*
+MyTime1
+-----------
+60
+*/
+
+SELECT DATEDIFF(second,CAST('01:15 AM' AS TIME),CAST('02:15:50' AS TIME)) AS MyTime1;
+/*
+MyTime1
+-----------
+3650
+*/
+
+/* Add 10 minutes to time */
+SELECT DATEADD(minute,10,CAST('01:00 AM' AS TIME)) AS MyTime1;
+/*
+MyTime1
+----------------
+01:10:00.0000000
+*/
+
+/* Subtract 10 minutes from time */
+SELECT DATEADD(minute,-10,CAST('01:00 AM' AS TIME)) AS MyTime1;
+/*
+MyTime1
+----------------
+00:50:00.0000000
+*/

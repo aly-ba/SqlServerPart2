@@ -1,0 +1,115 @@
+/* Course: Introduction to Dates and Times in SQL Server */
+SELECT CAST('03/15/2013' AS DATE) AS MyDate1;
+/*
+MyDate1
+----------
+2013-03-15
+*/
+
+SELECT CAST('2013-03-15' AS DATE) AS MyDate1;
+/*
+MyDate1
+----------
+2013-03-15
+*/
+
+SELECT PATIENT_ID,SERVICE_DATE
+ FROM RX_FILL_INFO
+ WHERE SERVICE_DATE BETWEEN DATEFROMPARTS(2006,02,06)
+                        AND DATEFROMPARTS(2007,04,07)
+ ORDER BY PATIENT_ID;
+
+/*
+PATIENT_ID SERVICE_DATE
+---------- ------------
+1          2007-01-01
+1          2007-03-02
+2          2006-02-06
+2          2007-04-07
+*/
+
+
+SELECT CAST('2013' AS DATE) AS MyDate1;
+/*
+MyDate1
+----------
+2013-01-01
+*/
+
+SELECT CAST('Feb 2013' AS DATE) AS MyDate1;
+/*
+MyDate1
+----------
+2013-02-01
+*/
+
+SELECT CAST('Feb 20, 13' AS DATE) AS MyDate1;
+/*
+MyDate1
+----------
+2013-02-20
+*/
+
+/*
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure;
+name                  minimum maximum config_value run_value
+--------------------- ------- ------- ------------ ---------
+two digit year cutoff 1753    9999    2049         2049
+
+2049--vv
+00 to 49 ==> 2000
+50 to 99 ==> 1900
+*/
+
+SELECT PATIENT_ID,BIRTH_DATE,
+       BIRTH_DATE + 7 AS BIRTH_DATE_PLUS_WEEK
+ FROM RX_FILL_INFO
+/*
+Msg 206, Level 16, State 2, Line 1
+Operand type clash: date is incompatible with int/numeric
+*/
+
+SELECT PATIENT_ID,BIRTH_DATE,DATEADD(day,7,BIRTH_DATE) AS BIRTH_DATE_PLUS_WEEK
+ FROM RX_FILL_INFO
+
+/*
+PATIENT_ID BIRTH_DATE BIRTH_DATE_PLUS_WEEK
+---------- ---------- --------------------
+1          1964-05-03 1964-05-10
+1          1964-05-03 1964-05-10
+1          1964-05-03 1964-05-10
+1          1964-05-03 1964-05-10
+1          1964-05-03 1964-05-10
+2          1987-11-23 1987-11-30
+2          1987-11-23 1987-11-30
+2          1987-11-23 1987-11-30
+2          1987-11-23 1987-11-30
+*/
+
+
+SELECT PATIENT_ID,BIRTH_DATE,SERVICE_DATE,
+       BIRTH_DATE - SERVICE_DATE AS DAYS_DIFF
+ FROM RX_FILL_INFO
+/*
+Msg 8117, Level 16, State 1, Line 1
+Operand data type date is invalid for subtract operator.
+*/
+
+SELECT PATIENT_ID,BIRTH_DATE,SERVICE_DATE,
+       DATEDIFF(day,BIRTH_DATE,SERVICE_DATE) AS DAYS_DIFF
+ FROM RX_FILL_INFO
+/*
+PATIENT_ID BIRTH_DATE SERVICE_DATE DAYS_DIFF
+---------- ---------- ------------ -----------
+1          1964-05-03 2007-01-01   15583
+1          1964-05-03 2007-03-02   15643
+1          1964-05-03 2007-07-03   15766
+1          1964-05-03 2008-03-04   16011
+1          1964-05-03 2009-02-05   16349
+2          1987-11-23 2006-02-06   6650
+2          1987-11-23 2007-04-07   7075
+2          1987-11-23 2008-07-08   7533
+2          1987-11-23 2008-12-09   7687
+*/

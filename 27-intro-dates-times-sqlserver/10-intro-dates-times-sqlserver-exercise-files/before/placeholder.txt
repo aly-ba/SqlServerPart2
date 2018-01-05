@@ -1,0 +1,294 @@
+/* Course: Introduction to Dates and Times in SQL Server */
+
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME2) + 7 AS NEXT_WEEK;
+/*
+Msg 206, Level 16, State 2, Line 1
+Operand type clash: datetime2 is incompatible with int
+*/
+
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME) + 7 AS NEXT_WEEK;
+/*
+NEXT_WEEK
+-----------------------
+2014-01-07 10:45:30.000
+*/
+
+SELECT DATEADD(WEEK,1,CAST('2013-12-31 10:45:30' AS DATETIME2)) AS NEXT_WEEK;
+/*
+NEXT_WEEK
+---------------------------
+2014-01-07 10:45:30.0000000
+*/
+
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME) - CAST('2013-12-30 09:45:30' AS DATETIME) AS DIFF;
+/*
+DIFF
+-----------------------
+1900-01-02 01:00:00.000
+*/
+
+SELECT CAST(CAST('2013-12-31 10:45:30' AS DATETIME) - CAST('2013-12-30 09:45:30' AS DATETIME) AS FLOAT(53)) AS DIFF;
+/*
+DIFF
+----------------------
+1.04166666666667
+*/
+
+SELECT DATEDIFF(day,CAST('2013-12-30 09:45:30' AS DATETIME2),CAST('2013-12-31 10:45:30' AS DATETIME2)) AS DIFF;
+/*
+DIFF
+-----------
+1
+*/
+
+SELECT DATEDIFF(second,CAST('2013-12-30 09:45:30' AS DATETIME2),CAST('2013-12-31 10:45:30' AS DATETIME2)) AS DIFF;
+/*
+DIFF
+-----------
+90000
+*/
+
+SELECT 90000E0/86400E0; --1.04166666666667
+
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME2) AS MyDT;
+/*
+MyDT
+---------------------------
+2013-12-31 10:45:30.0000000
+*/
+
+SELECT CAST(CAST('2013-12-31 10:45:30' AS DATETIME2) AS DATE) AS MyDate;
+/*
+MyDate
+----------
+2013-12-31
+*/
+
+SELECT CAST(CAST('2013-12-31 10:45:30' AS DATETIME2) AS TIME) AS MyTime;
+/*
+MyTime
+----------------
+10:45:30.0000000
+*/
+
+SELECT CONVERT(varchar(8),CAST('2013-12-31 10:45:30' AS DATETIME2),112) AS TxtDate;
+/*
+TxtDate
+--------
+20131231
+*/
+
+SELECT CAST(CONVERT(varchar(8),CAST('2013-12-31 10:45:30' AS DATETIME2),112) AS DATE) AS MyDate;
+/*
+MyDate
+----------
+2013-12-31
+*/
+
+
+SELECT CAST(0 AS SMALLDATETIME) AS MySmallDateTime,
+       CAST(0 AS DATETIME) AS MyDateTime;
+/*
+MySmallDateTime         MyDateTime
+----------------------- -----------------------
+1900-01-01 00:00:00     1900-01-01 00:00:00.000
+*/
+
+SELECT CAST('' AS DATE) AS MyDate,
+       CAST('' AS TIME) AS MyTime,
+       CAST('' AS SMALLDATETIME) AS MySmallDateTime,
+       CAST('' AS DATETIME) AS MyDateTime,
+       CAST('' AS DATETIME2) AS MyDateTime2;
+/*
+MyDate     MyTime           MySmallDateTime         MyDateTime              MyDateTime2
+---------- ---------------- ----------------------- ----------------------- ---------------------------
+1900-01-01 00:00:00.0000000 1900-01-01 00:00:00     1900-01-01 00:00:00.000 1900-01-01 00:00:00.0000000
+*/
+
+
+SELECT DATEADD(second,3600,CAST('' AS TIME)) AS HOUR_LATER,
+       DATEADD(day,365,CAST('' AS DATE)) AS YEAR_LATER;
+/*
+HOUR_LATER       YEAR_LATER
+---------------- ----------
+01:00:00.0000000 1901-01-01
+*/
+
+SELECT CAST(CAST('2013-12-31 10:45:30' AS DATETIME) AS FLOAT) AS MyFloat;
+/*
+MyFloat
+----------------------
+41637.4482638889
+*/
+
+SELECT DATEDIFF(day,0,CAST('2013-12-31 10:45:30' AS DATETIME)) AS MyDayDiff;
+/*
+MyDayDiff
+-----------
+41637
+*/
+
+SELECT DATEDIFF(second,0,CAST('10:45:30' AS DATETIME)) AS MySecondDiff;
+/*
+MySecondDiff
+------------
+38730
+*/
+
+SELECT 38730E0/86400E0; -- 0.448263888888889
+
+SELECT DATEDIFF(second,
+                     0,
+					 DATEADD(day,
+					         DATEDIFF(day,
+							          CAST('2013-12-31 10:45:30' AS DATETIME2),
+									  0),
+				             CAST('2013-12-31 10:45:30' AS DATETIME2))
+		       ) AS MySecondDiff;
+/*
+MySecondDiff
+------------
+38730
+*/
+
+SELECT DATEDIFF(second,
+                0, 
+                CAST('2013-12-31 10:45:30' AS DATETIME2));
+/*
+Msg 535, Level 16, State 0, Line 1
+The datediff function resulted in an overflow. The number of dateparts separating two date/time instances is too large. Try to use datediff with a less precise datepart.
+*/
+
+SELECT DATEDIFF(day,
+                0, 
+                CAST('2013-12-31 10:45:30' AS DATETIME2)) AS MyDayDiff;
+/*
+MyDayDiff
+-----------
+41637
+*/
+
+SELECT DATEPART(hour,CAST('2013-12-31 10:45:30' AS DATETIME2)) AS HOURS,
+       DATEPART(minute,CAST('2013-12-31 10:45:30' AS DATETIME2)) AS MINUTES,
+       DATEPART(second,CAST('2013-12-31 10:45:30' AS DATETIME2)) AS SECONDS;
+/*
+HOURS       MINUTES     SECONDS
+----------- ----------- -----------
+10          45          30
+*/
+
+SELECT 60*60*DATEPART(hour,CAST('2013-12-31 10:45:30' AS DATETIME2)) 
+       + 60*DATEPART(minute,CAST('2013-12-31 10:45:30' AS DATETIME2)) 
+       + DATEPART(second,CAST('2013-12-31 10:45:30' AS DATETIME2)) AS MySecondDiff;
+/*
+MySecondDiff
+------------
+38730
+*/
+
+--Zero the Date
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME2) AS ORIGINAL_DATE,
+       DATEADD(day,
+	           DATEDIFF(day,CAST('2013-12-31 10:45:30' AS DATETIME2),0),
+			   CAST('2013-12-31 10:45:30' AS DATETIME2)) AS ZEROED_DATE
+/*
+ORIGINAL_DATE               ZEROED_DATE
+--------------------------- ---------------------------
+2013-12-31 10:45:30.0000000 1900-01-01 10:45:30.0000000
+*/
+
+--Zero the Time
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME2) AS ORIGINAL_DATE,
+       DATEADD(day,
+	           DATEDIFF(day,0,CAST('2013-12-31 10:45:30' AS DATETIME2)),
+			   0) AS ZEROED_TIME
+/*
+ORIGINAL_DATE               ZEROED_TIME
+--------------------------- -----------------------
+2013-12-31 10:45:30.0000000 2013-12-31 00:00:00.000
+*/
+
+SELECT CAST(CAST(CAST('2013-12-31 10:45:30' AS DATETIME2) AS TIME) AS DATETIME2) AS ZEROED_DATE;
+SELECT CAST(CAST(CAST('2013-12-31 10:45:30' AS DATETIME2) AS DATE) AS DATETIME2) AS ZEROED_TIME;
+/*
+ZEROED_DATE
+---------------------------
+1900-01-01 10:45:30.0000000
+
+ZEROED_TIME
+---------------------------
+2013-12-31 00:00:00.0000000
+*/
+
+--First Day of Year
+SELECT CAST('2013-12-31 10:45:30' AS DATETIME2) AS ORIGINAL_DATE,
+       DATEADD(year,
+	           DATEDIFF(year,0,CAST('2013-12-31 10:45:30' AS DATETIME2)),
+			   CAST('' AS DATETIME2)) AS FIRST_DAY_OF_YEAR;
+/*
+ORIGINAL_DATE               FIRST_DAY_OF_YEAR
+--------------------------- -----------------------
+2013-12-31 10:45:30.0000000 2013-01-01 00:00:00.000
+*/
+
+--Last Day of Year
+SELECT CAST('2013-12-30 10:45:30' AS DATETIME2) AS ORIGINAL_DATE,
+       DATEADD(year,
+	           DATEDIFF(year,0,CAST('2013-12-30 10:45:30' AS DATETIME2)) + 1,
+			   CAST('' AS DATETIME2)) - 1 AS LAST_DAY_OF_YEAR;
+/*
+ORIGINAL_DATE               LAST_DAY_OF_YEAR
+--------------------------- -----------------------
+2013-12-30 10:45:30.0000000 2013-12-31 00:00:00.000
+*/
+
+SELECT CAST('2013-12-30 10:45:30' AS DATETIME2) AS ORIGINAL_DATE,
+       DATEADD(year,
+               DATEDIFF(year,
+                        CAST('' AS DATETIME2),
+                        CAST('2013-12-30 10:45:30' AS DATETIME2)) + 1,
+               CAST('' AS DATETIME2)) - 1 AS LAST_DAY_OF_YEAR;
+
+Msg 206, Level 16, State 2, Line 1
+Operand type clash: datetime2 is incompatible with int
+
+SELECT CAST('2013-12-30 10:45:30' AS DATETIME2) AS ORIGINAL_DATE,
+       DATEADD(day,
+	           -1,
+			   DATEADD(year,
+					   DATEDIFF(year,
+								0,
+								CAST('2013-12-30 10:45:30' AS DATETIME2)) + 1,
+					   CAST('' AS DATETIME2))) AS LAST_DAY_OF_YEAR;
+/*
+ORIGINAL_DATE               LAST_DAY_OF_YEAR
+--------------------------- ---------------------------
+2013-12-30 10:45:30.0000000 2013-12-31 00:00:00.0000000
+*/
+
+DECLARE @dt DATETIME2 = '2013-12-31';
+DECLARE @bd DATETIME2 = '1900-01-01'; -- MONDAY!!!
+SELECT @dt AS ORIGINAL_DATE,
+       DATEADD(day,
+	           7*(DATEDIFF(day,@bd,@dt)/7) + 7,
+			   @bd) AS NEXT_MONDAY;
+
+/*
+ORIGINAL_DATE               NEXT_MONDAY
+--------------------------- ---------------------------
+2013-12-31 00:00:00.0000000 2014-01-06 00:00:00.0000000
+*/
+     
+DECLARE @dt DATETIME2 = '2013-12-31';
+DECLARE @bd DATETIME2 = '1900-01-01'; -- MONDAY
+SELECT @dt AS ORIGINAL_DATE,
+       DATEADD(week,
+               DATEDIFF(day,@bd,@dt)/7 + 1,
+               @bd) AS NEXT_MONDAY;
+/*
+ORIGINAL_DATE               NEXT_MONDAY
+--------------------------- ---------------------------
+2013-12-31 00:00:00.0000000 2014-01-06 00:00:00.0000000
+*/
+
+

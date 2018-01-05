@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [SQLCLR_Functions] (Assembly)
+     Create
+       [SQLCLR_Functions] (Assembly)
+
+** Supporting actions
+     Drop
+       [dbo].[RegexMatch] (Function)
+     Create
+       [dbo].[RegexMatch] (Function)
